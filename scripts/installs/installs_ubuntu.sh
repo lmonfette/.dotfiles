@@ -7,6 +7,11 @@ fi
 INSTALLS_UBUNTU_FILE_INCLUDED=1
 # prevent double inclusion
 
+DOTFILES_DIR=~/.dotfiles
+SCRIPTS_DIR=$DOTFILES_DIR/scripts
+
+source "${SCRIPTS_DIR}/defines/defines.sh"
+
 ubuntu_install_openvpn_client() {
     # install required tools for installation
     sudo apt install -y apt-transport-https curl
@@ -26,4 +31,37 @@ ubuntu_install_openvpn_client() {
     sudo apt update -y
 
     sudo apt install -y openvpn3
+}
+
+ubuntu_install_saleae_logic_analyzer_app() {
+    # create the application folder if it does not exists
+    mkdir -p $APPS_DIR
+
+    # download the saleae logic analyzer app image for ubuntu
+    curl -o $APPS_DIR/SaleaeLogicAnalyzerApp.AppImage -LO "https://logic2api.saleae.com/download?os=linux&arch=x64"
+
+    # add execution rights
+    chmod +x $APPS_DIR/SaleaeLogicAnalyzerApp.AppImage
+}
+
+ubuntu_install_obsidian() {
+    # create the application folder if it does not exists
+    mkdir -p $APPS_DIR
+
+    # download the obsidian app image for ubuntu
+    curl -o $APPS_DIR/Obsidian.AppImage -LO "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.9.14/Obsidian-1.9.14.AppImage"
+
+    # add execution rights
+    chmod +x $APPS_DIR/Obsidian.AppImage
+}
+
+ubuntu_install_inkscape() {
+    # create the application folder if it does not exists
+    mkdir -p $APPS_DIR
+
+    # download the saleae logic analyzer app image for ubuntu
+    curl -o $APPS_DIR/InkScape-1.4.2.AppImage -LO "https://inkscape.org/release/inkscape-1.4.2/gnulinux/appimage/dl/"
+
+    # add execution rights
+    chmod +x $APPS_DIR/InkScape-1.4.2.AppImage
 }

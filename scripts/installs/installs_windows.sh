@@ -8,5 +8,17 @@ INSTALLS_WINDOWS_FILE_INCLUDED=1
 # prevent double inclusion
 
 windows_install_openvpn_client() {
-    echo "'windows_install_openvpn_client'not implemented."
+    echo "'windows_install_openvpn_client' not implemented."
+}
+
+windows_install_saleae_logic_analyzer_app() {
+    echo "'windows_install_saleae_logic_analyzer_app' not implemented."
+}
+
+windows_install_obsidian() {
+    echo "'windows_install_obsidian' not implemented."
+}
+
+windows_install_obsidian() {
+    echo "'windows_install_obsidian' not implemented."
 }

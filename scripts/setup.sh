@@ -7,14 +7,13 @@ fi
 ROOT_SETUP_FILE_INCLUDED=1
 # prevent double inclusion
 
-NVIM_CGF_DIR=~/.config/nvim
-NVIM_SCRIPTS_DIR=$NVIM_CGF_DIR/scripts
+DOTFILES_DIR=~/.dotfiles
+SCRIPTS_DIR=$DOTFILES_DIR/scripts
 
-source "${NVIM_SCRIPTS_DIR}/setup/setup.sh"
-source "${NVIM_SCRIPTS_DIR}/installs/installs.sh"
+source "${SCRIPTS_DIR}/include.sh"
 
 # setup the computer
-setup
+# setup
 
 # install all dependencies
 install_all

@@ -1,12 +1,19 @@
 #!/bin/bash
 
-NVIM_CGF_DIR=~/.config/nvim
-NVIM_SCRIPTS_DIR=$NVIM_CGF_DIR/scripts
+# prevent double inclusion
+if [[ -n "${SETUP_FILE_INCLUDED:-}" ]]; then
+    return 0
+fi
+SETUP_FILE_INCLUDED=1
+# prevent double inclusion
 
-source "${NVIM_SCRIPTS_DIR}/utils/utils.sh"
-source "${NVIM_SCRIPTS_DIR}/setup/setup_macos.sh"
-source "${NVIM_SCRIPTS_DIR}/setup/setup_ubuntu.sh"
-source "${NVIM_SCRIPTS_DIR}/setup/setup_windows.sh"
+DOTFILES_DIR=~/.dotfiles
+SCRIPTS_DIR=$DOTFILES_DIR/scripts
+
+source "${SCRIPTS_DIR}/utils/utils.sh"
+source "${SCRIPTS_DIR}/setup/setup_macos.sh"
+source "${SCRIPTS_DIR}/setup/setup_ubuntu.sh"
+source "${SCRIPTS_DIR}/setup/setup_windows.sh"
 
 setup() {
     exec_os_specific macos_setup ubuntu_setup windows_setup

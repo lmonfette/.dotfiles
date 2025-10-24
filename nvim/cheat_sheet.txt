@@ -1,0 +1,134 @@
+--- explore mode commands ---
+1. <%> -> create file
+2. <d> -> create directory
+
+--- normal mode commands ---
+
+leader = " "
+
+1. (remapped) "<leader>pv" -> explore: goes back to browsing files
+2.                       k -> go one line up   (also, you can write a number and press j and it will jump that number of lines up)
+3.                       j -> go one line down (also, you can write a number and press k and it will jump that number of lines down)
+4.                       I -> start insert mode at the beginning of the line
+5.                       A -> start insert mode at the end of the line
+6.                       $ -> go to the end of the line
+
+--- plugins ---
+
+- the package manager I use is called "Lazy" (for lazy loading)
+- to open the manager, write the normal mode command: ":Lazy"
+- it is possible to see all the loaded and installed plugins
+- refer to /lua/config/lazy.lua for the configuration
+
+--- notes ---
+
+- any directory in the /lua directory can be required by lua (put it there if you need to require it somewhere)
+- /lua/config I have decided to put the personal configs
+- /lua/plugins is where the plugins I want are defined, please check the "plugins" sections higher
+
+--- nvim-tree ---
+
+- pressing 'a' when in the explorer create a file or folder. adding a trailing / makes it a folder
+- pressing 'r' prompts to rename
+- pressing 'd' prompts to delete
+- backspace closes a hovered folder
+- <C-]> navigate into a folder
+
+--- navigation ---
+- <C-o> follow link (not sure)
+- <C-i> come back from a followed link (not sure)
+
+------------------------ READING VIM DOC ------------------------
+
+Vim has many options that can be set.
+
+To check which options are set from their different values, do the command:
+
+":set < >|<all>|<option_name>"
+
+------------------------ neovim tutor ------------------------
+
+- <C-]> follows a link
+- <C-O> comes back from a link
+
+----------------- user manual -----------------------
+
+:help user-manual
+:Tutor
+
+---------- other -------------
+
+1. pressing ":" when selecting multiple line will apply a command on all those line. ex:
+
+:'<,'>d will delete all the lines
+:'<,'>y will yank all the lines
+:'<,'>norm A"; will move the cursor at the end of all the lines, enter insert mode and then write ";
+
+2. hovering a number and pressing <C-a> will increase the number
+
+try it: 3, 43, 102
+
+3. hovering a number and pressing <C-x> will decrease the number
+
+try it: 5, 42, 101
+
+4. <C-a> jumps to the next number and increments is, <C-x> jumps to it and decrements it
+
+word word words 2, some other words 4
+
+5. selecting all the lines containing some number and then pressing <g-C-a> will order them
+
+try it:
+
+0.
+0.
+0.
+
+gives:
+
+1.
+2.
+3.
+
+6. daw -> delete a word, diw -> delete inner word, ciw -> change a word, but:
+
+if there is a text like this:
+
+[({"hello"})]
+
+I can do: ci", ci}, ci) or ci] and if will change everything inside those delimiters.
+You can also write the opening or closing [/]. it does not matter
+
+- ci}
+- va}
+- vi}
+
+try it:
+
+[({"hello"})]
+
+7. W jumps to the next word (instead of just the next word or delimiter), you can combine it:
+
+jump to hello from beginning of the beginning of the line:
+
+salut:salut hello yolo
+
+don't forget that you can use actions like this:
+
+- vW
+- dW
+- diW
+
+try it:
+
+salut:salut hello yolo
+
+8. folding
+
+zo → Open the current fold (unfold one level).
+zO → Open recursively (unfold all nested folds inside the current fold).
+zc → Close the current fold.
+zC → Close recursively (fold all nested folds inside).
+za → Toggle fold open/close.
+zR → Open all folds in the buffer (fully unfold everything).
+zM → Close all folds in the buffer (fully fold everything)

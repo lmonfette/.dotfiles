@@ -1,0 +1,287 @@
+# Ansible managed message here
+
+#==================================================================================#
+# Sway Window Manager Configuration File                                           #
+#----------------------------------------------------------------------------------#
+# Purpose: This configuration file enables you to tweak keyboard shortcuts, adjust #
+# themes and colors, set the wallpaper, and more.                                  #
+#                                                                                  #
+# License: Creative Commons Attribution 4.0 International                          #
+#                                                                                  #
+# Pro-tip: While using Sway, you can trigger this configuration to be re-read by   #
+# pressing Super + Shift + C.                                                      #
+#==================================================================================#
+
+
+#========================#
+# Appearance and Theming #
+#========================#
+# Declare Colors:
+set $background #332b2b
+set $color_urgent #fb4934
+set $text_color #ffffff
+set $title_bg_unfocused #666666
+set $title_outline_active #0e844e
+set $title_outline_unfocused #332b2b
+
+# useful variables
+set $SWAY_CGF_DIR $HOME/.config/sway
+set $SWAY_ASSETS_DIR $SWAY_CGF_DIR/assets
+set $SWAY_SCRIPTS_DIR $SWAY_CGF_DIR/scripts
+set $SWAY_STATE_DIR $SWAY_CGF_DIR/state
+
+# Set Colors:           Border                   Background          Text          Indicator             Child Border
+client.background       $background
+client.focused          $title_outline_active    $background         $text_color   $title_outline_active $title_outline_active
+client.focused_inactive $title_outline_unfocused $background         $text_color   $text_color           $title_outline_unfocused
+client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
+client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
+
+# Add gaps in between all application windows:
+gaps inner 8
+gaps outer 4
+
+# Configure the default border:
+default_border pixel 2
+
+# Set the Wallpaper:
+output * bg $SWAY_ASSETS_DIR/city_at_night.jpg fill
+
+
+#====================================#
+# Activate the panel                 #
+#====================================#
+# Set the waybar command for the application launcher:
+bar {
+    swaybar_command waybar
+}
+
+
+#====================================#
+# Keyboard Shortcuts (Sway-specific) #
+#====================================#
+# Set the modifier key to super:
+set $MOD Mod4
+
+# Set the ALT key to $alt (since Mod1 is harder to remember):
+set $ALT Mod1
+
+# Toggle the main monitor's activity
+set $INTEGRATED_MONITOR "eDP-1"
+set $CENTER_SPARK_MONITOR "DP-1"
+set $HOME_CENTER_MONITOR "HDMI-A-1"
+bindsym $MOD+m exec $SWAY_SCRIPTS_DIR/cycle_monitor_state.sh
+bindsym $MOD+comma exec $SWAY_SCRIPTS_DIR/cycle_keyboard_layout.sh
+
+# Place the monitor properly
+output $INTEGRATED_MONITOR pos 0 0
+output $CENTER_SPARK_MONITOR pos 1920 0
+output $HOME_CENTER_MONITOR pos 1920 0
+
+# Connect to HD 4.50BTNC Headset
+set $CONNECT_BLUETOOTH_SCRIPT "$SWAY_SCRIPTS_DIR/bluetooth/connect.sh"
+bindsym $MOD+p exec $CONNECT_BLUETOOTH_SCRIPT
+
+# Disconnect to HD 4.50BTNC Headset
+set $DISCONNECT_BLUETOOTH_SCRIPT "$SWAY_SCRIPTS_DIR/bluetooth/disconnect.sh"
+bindsym $MOD+Shift+p exec $DISCONNECT_BLUETOOTH_SCRIPT
+
+# set $CONNECT_SPARKVPN_SCRIPT "$SWAY_SCRIPTS_DIR/openvpn/connect.sh"
+# bindsym $MOD+o exec $CONNECT_SPARKVPN_SCRIPT
+#
+# set $DISCONNECT_SPARKVPN_SCRIPT "$SWAY_SCRIPTS_DIR/openvpn/disconnect.sh"
+# bindsym $MOD+Shift+o exec $DISCONNECT_SPARKVPN_SCRIPT
+
+# Set up a shortcut to reload this config file:
+bindsym $MOD+Shift+c reload
+
+# Quit your current session and return to the log-in manager/tty:
+bindsym $MOD+Shift+e exec $SWAY_SCRIPTS_DIR/exit.sh
+
+# Screen locking (automatic, with a timeout)
+set $LOCK_CMD swaylock -c 550000
+exec swayidle -w \
+    timeout 600 $LOCK_CMD \
+    timeout 570 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep $LOCK_CMD
+
+# Screen locking (manual)
+set $LOCK_SCREEN_CMD exec bash $SWAY_SCRIPTS_DIR/lock_screen.sh
+bindsym $MOD+Escape exec $LOCK_SCREEN_CMD
+
+
+#========================================#
+# Keyboard Shortcuts (Window Management) #
+#========================================#
+# Move focus to another window:
+bindsym $MOD+Left focus left
+bindsym $MOD+Down focus down
+bindsym $MOD+Up focus up
+bindsym $MOD+Right focus right
+
+# Move focus to another window ("cult of vim" version):
+bindsym $MOD+j focus down
+bindsym $MOD+h focus left
+bindsym $MOD+l focus right
+bindsym $MOD+k focus up
+
+# Move the window:
+bindsym $MOD+Shift+Left move left
+bindsym $MOD+Shift+Down move down
+bindsym $MOD+Shift+Up move up
+bindsym $MOD+Shift+Right move right
+
+# Move the the window ("cult of vim" version):
+bindsym $MOD+Shift+h move left
+bindsym $MOD+Shift+j move down
+bindsym $MOD+Shift+k move up
+bindsym $MOD+Shift+l move right
+
+# Hold the modifier key and hold the left/right mouse button
+# to drag or resize a window respectively. This isn't exclusive
+# to floating windows:
+floating_modifier $MOD normal
+
+# Resizing containers:
+mode "resize" {
+    # Resize windows with arrow keys:
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # "cult of vim" version:
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $MOD+r mode "resize"
+
+
+#=================================#
+# Keyboard Shortcuts (Workspaces) #
+#=================================#
+# Switch to workspace
+set $WS1 "1 - Alacritty"
+set $WS2 "2 - VSCode"
+set $WS3 "3 - Chrome"
+set $WS4 "4 - Spotify"
+set $WS5 "5 - Obsidian"
+set $WS6 "6 - Saleae"
+
+# Move between workspaces
+bindsym $MOD+1 workspace $WS1
+bindsym $MOD+2 workspace $WS2
+bindsym $MOD+3 workspace $WS3
+bindsym $MOD+4 workspace $WS4
+bindsym $MOD+5 workspace $WS5
+bindsym $MOD+6 workspace $WS6
+
+# Move focused container to workspace
+bindsym $MOD+Shift+1 move container to workspace $WS1
+bindsym $MOD+Shift+2 move container to workspace $WS2
+bindsym $MOD+Shift+3 move container to workspace $WS3
+bindsym $MOD+Shift+4 move container to workspace $WS4
+bindsym $MOD+Shift+5 move container to workspace $WS5
+bindsym $MOD+Shift+6 move container to workspace $WS6
+
+#=============================#
+# Keyboard Shortcuts (Layout) #
+#=============================#
+# You can "split" the current object of your focus with
+# $MOD+b or $MOD+v, for horizontal and vertical splits
+# respectively.
+bindsym $MOD+b splith
+bindsym $MOD+v splitv
+
+# Switch the current container between different layout styles
+bindsym $MOD+s layout stacking
+bindsym $MOD+w layout tabbed
+bindsym $MOD+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $MOD+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $MOD+Shift+f floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $MOD+tab focus mode_toggle
+
+# Move focus to the parent container
+bindsym $MOD+a focus parent
+
+
+#=================================#
+# Keyboard Shortcuts (Scratchpad) #
+#=================================#
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $MOD+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $MOD+minus scratchpad show
+
+
+#===============================#
+# Keyboard Shortcuts (Hardware) #
+#===============================#
+# Audio
+bindsym XF86AudioRaiseVolume exec "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+; pkill -RTMIN+8 waybar"
+bindsym XF86AudioLowerVolume exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; pkill -RTMIN+8 waybar"
+bindsym XF86AudioMute exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; pkill -RTMIN+8 waybar"
+
+bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
+bindsym F10 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+bindsym F11 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+bindsym F12 exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+
+# https://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols
+
+# Brightness
+bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 10
+
+
+#=============================================#
+# Keyboard Shortcuts (launching applications) #
+#=============================================#
+# Set up wofi to replace dmenu as the launcher of choice:
+set $MENU_CMD wofi --show drun  -i | xargs swaymsg exec --
+
+# Launch your browser:
+bindsym $MOD+shift+b exec google-chrome --enable-features=WebRTCPipeWireCapturer
+
+# Open a file manager:
+bindsym ctrl+$MOD+f exec files
+
+# Open a terminal emulator:
+set $term alacritty
+bindsym $MOD+t exec $term
+
+# Kill focused window:
+bindsym $MOD+Shift+q kill
+
+# Open the application launcher:
+bindsym $MOD+space exec $MENU_CMD
+
+# Open the application launcher (alternate version):
+bindsym $MOD+d exec $MENU_CMD
+
+#======#
+# Misc #
+#======#
+include /etc/sway/config-vars.d/*
+include /etc/sway/config.d/*

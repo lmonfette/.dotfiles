@@ -22,3 +22,7 @@ macos_install_obsidian() {
 macos_install_inkscape() {
     echo "'macos_install_inkscape' not implemented."
 }
+
+macos_install_treesitter_cli() {
+    brew install tree-sitter-cli
+}

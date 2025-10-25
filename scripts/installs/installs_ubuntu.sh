@@ -65,3 +65,7 @@ ubuntu_install_inkscape() {
     # add execution rights
     chmod +x $APPS_DIR/InkScape-1.4.2.AppImage
 }
+
+ubuntu_install_treesitter_cli() {
+    npm install -g tree-sitter-cli
+}

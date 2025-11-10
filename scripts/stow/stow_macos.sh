@@ -11,14 +11,17 @@ macos_stow() {
     # setup alacritty
     stow alacritty
 
-    # # setup neovim
+    # setup neovim
     stow nvim
 
-    # # setup tmux
+    # setup tmux
     stow tmux
 
-    # # setup zsh
+    # setup zsh
     stow zsh
+
+    # setup oh-my-zsh
+    stow oh-my-zsh
 }
 
 macos_unstow() {
@@ -33,4 +36,7 @@ macos_unstow() {
 
     # remove zsh
     stow -D zsh
+
+    # remove oh-my-zsh
+    stow -D oh-my-zsh
 }

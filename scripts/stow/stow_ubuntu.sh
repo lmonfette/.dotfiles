@@ -25,6 +25,9 @@ ubuntu_stow() {
 
     # setup zsh
     stow zsh
+
+    # setup oh-my-zsh
+    stow oh-my-zsh
 }
 
 ubuntu_unstow() {
@@ -42,4 +45,7 @@ ubuntu_unstow() {
 
     # remove zsh
     stow -D zsh
+
+    # remove oh-my-zsh
+    stow -D oh-my-zsh
 }

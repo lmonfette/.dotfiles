@@ -43,6 +43,10 @@ install_stow() {
     exec_os_specific macos_install_stow ubuntu_install_stow windows_install_stow
 }
 
+install_treesitter_cli() {
+    exec_os_specific macos_install_treesitter_cli ubuntu_install_treesitter_cli windows_install_treesitter_cli
+}
+
 install_all() {
     install_openvpn_client
     install_saleae_logic_analyzer_app
@@ -51,4 +55,5 @@ install_all() {
     install_treesitter_cli
     install_git
     install_stow
+    install_treesitter_cli
 }

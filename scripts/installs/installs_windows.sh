@@ -30,3 +30,7 @@ windows_install_treesitter_cli() {
 windows_install_stow() {
     echo "'windows_install_stow' not implemented."
 }
+
+windows_install_treesitter_cli() {
+    echo "'windows_install_treesitter_cli' not implemented."
+}

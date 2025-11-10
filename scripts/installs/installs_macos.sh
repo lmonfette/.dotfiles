@@ -34,3 +34,7 @@ macos_install_git() {
 macos_install_stow() {
     brew install stow
 }
+
+macos_install_treesitter_cli() {
+    brew install tree-sitter-cli
+}

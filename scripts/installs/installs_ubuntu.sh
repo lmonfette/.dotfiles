@@ -77,3 +77,7 @@ ubuntu_install_git() {
 ubuntu_install_stow() {
     sudo apt install stow
 }
+
+ubuntu_install_treesitter_cli() {
+    sudo apt install tree-sitter-cli
+}

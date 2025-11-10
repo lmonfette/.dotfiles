@@ -127,9 +127,8 @@ local mason_config = {
         -- b
         'bash-debug-adapter',
         -- c
-        'chrome-debug-adapter',
         'codelldb',
-        -- 'cortex-debug',              -- BUG: commenting this because it has somehow got to be installed manually with mason
+        -- 'cortex-debug',   -- BUG: commenting this because it has somehow got to be installed manually with mason
         'cpptools',
         -- d
         'debugpy',
@@ -270,7 +269,7 @@ local mason_config = {
 local function setup_lsps()
     -- These absolutely need to be called after mason has been setup, otherwise, the table is not valid
     local package_to_lspconfig = require('mason-lspconfig.mappings').get_mason_map().package_to_lspconfig
-    
+
     -- check if the buf_ls has been updated and we can ad it back to the list
     if package_to_lspconfig['buf-language-server'] == 'buf_ls' then
         logging.error('PLEASE PUT buf-language-server BACK IN ensure_installed')
@@ -320,7 +319,7 @@ local function setup_linters()
 
             if linter ~= nil then
                 nvim_lint.linters_by_ft[linter_by_ft_name][i] = linter
-            end                
+            end
         end
     end
 
@@ -483,7 +482,7 @@ local function init()
     setup_daps()
     setup_linters()
     setup_formatters()
-    
+
     -- vim.cmd.MasonInstall('cortex-debug') -- BUG: somehow this has to be installed from mason directly
     -- vim.cmd.MasonUpdate()
 end

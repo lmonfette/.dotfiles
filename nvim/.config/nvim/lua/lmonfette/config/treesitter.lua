@@ -63,7 +63,7 @@ local treesitter_config = {
         'scss',
         'sql',
         'ssh_config',
-        'swift',
+        -- 'swift',   -- BUG: this is too new for now
         -- t
         'terraform',
         'tmux',

@@ -26,3 +26,7 @@ windows_install_obsidian() {
 windows_install_treesitter_cli() {
     echo "'windows_install_git' not implemented."
 }
+
+windows_install_stow() {
+    echo "'windows_install_stow' not implemented."
+}

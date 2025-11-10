@@ -106,10 +106,13 @@ exec swayidle -w \
     resume 'swaymsg "output * dpms on"' \
     before-sleep $LOCK_CMD
 
-# Screen locking (manual)
+# Screen locking
 set $LOCK_SCREEN_CMD exec bash $SWAY_SCRIPTS_DIR/lock_screen.sh
 bindsym $MOD+Escape exec $LOCK_SCREEN_CMD
 
+# Suspend mode
+set $SUSPEND_CMD exec bash $SWAY_SCRIPTS_DIR/suspend.sh
+bindsym $MOD+y exec $SUSPEND_CMD
 
 #========================================#
 # Keyboard Shortcuts (Window Management) #

@@ -35,10 +35,15 @@ install_treesitter_cli() {
     exec_os_specific macos_install_treesitter_cli ubuntu_install_treesitter_cli windows_install_treesitter_cli
 }
 
+install_git() {
+    exec_os_specific macos_install_git ubuntu_install_git windows_install_git
+}
+
 install_all() {
     install_openvpn_client
     install_saleae_logic_analyzer_app
     install_obsidian
     install_inkscape
     install_treesitter_cli
+    install_git
 }

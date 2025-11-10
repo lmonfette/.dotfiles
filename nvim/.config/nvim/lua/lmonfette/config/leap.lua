@@ -2,6 +2,7 @@ local leap = require('leap')
 local leap_config = {}
 
 local function init()
+    leap.set_default_mappings()
 end
 
 local function set_options()

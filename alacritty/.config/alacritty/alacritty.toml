@@ -28,7 +28,7 @@ foreground = "0xfeffff"
 TERM = "xterm-256color"
 
 [font]
-size = 12
+size = 11.5
 
 [font.bold]
 family = "JetBrainsMono Nerd Font Mono"
@@ -46,7 +46,7 @@ style = "Italic"
 family = "JetBrainsMono Nerd Font Mono"
 style = "Regular"
 
-[terminal.shell]
+[shell]
 program = "/bin/zsh"
 
 [window]

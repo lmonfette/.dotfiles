@@ -69,3 +69,7 @@ ubuntu_install_inkscape() {
 ubuntu_install_treesitter_cli() {
     npm install -g tree-sitter-cli
 }
+
+ubuntu_install_git() {
+    sudo apt install git
+}

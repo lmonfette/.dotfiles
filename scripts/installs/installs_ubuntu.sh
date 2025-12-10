@@ -81,3 +81,9 @@ ubuntu_install_stow() {
 ubuntu_install_treesitter_cli() {
     sudo apt install tree-sitter-cli
 }
+
+ubuntu_install_alacritty() {
+    sudo apt install rustup
+    rustup install stable
+    cargo install alacritty
+}

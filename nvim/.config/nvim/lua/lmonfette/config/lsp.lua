@@ -27,8 +27,8 @@ local function init()
             vim.keymap.set('n', '<leader>od', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
             vim.keymap.set('n', '<leader>cd', '<cmd>lua vim.diagnostic.hide()<cr>', opts)
             -- copilot
-            vim.keymap.set('n', '<leader>ec', '<cmd>Copilot enable<cr>', opts)
-            vim.keymap.set('n', '<leader>dc', '<cmd>Copilot disable<cr>', opts)
+            -- vim.keymap.set('n', '<leader>ec', '<cmd>Copilot enable<cr>', opts)
+            -- vim.keymap.set('n', '<leader>dc', '<cmd>Copilot disable<cr>', opts)
         end,
     })
 
@@ -43,7 +43,7 @@ local function init()
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
-            { name = 'copilot' }
+            -- { name = 'copilot' }
         }, {
             { name = 'buffer' },
         }),

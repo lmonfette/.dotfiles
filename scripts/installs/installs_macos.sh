@@ -38,3 +38,7 @@ macos_install_stow() {
 macos_install_treesitter_cli() {
     brew install tree-sitter-cli
 }
+
+macos_install_alacritty() {
+    brew install --cask alacritty
+}

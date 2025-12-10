@@ -34,3 +34,7 @@ windows_install_stow() {
 windows_install_treesitter_cli() {
     echo "'windows_install_treesitter_cli' not implemented."
 }
+
+windows_install_alacritty() {
+    echo "'windows_install_alacritty' not implemented."
+}

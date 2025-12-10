@@ -6,6 +6,6 @@ return {
 		{ url = 'https://github.com/hrsh7th/cmp-buffer.git' },
 		{ url = 'https://github.com/hrsh7th/cmp-nvim-lsp.git' },
 		{ url = 'https://github.com/hrsh7th/cmp-cmdline.git' },
-		{ url = 'https://github.com/github/copilot.vim.git' },
+		-- { url = 'https://github.com/github/copilot.vim.git' },
 	}
 }

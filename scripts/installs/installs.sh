@@ -47,6 +47,10 @@ install_treesitter_cli() {
     exec_os_specific macos_install_treesitter_cli ubuntu_install_treesitter_cli windows_install_treesitter_cli
 }
 
+install_alacritty() {
+    exec_os_specific macos_install_alacritty ubuntu_install_alacritty windows_install_alacritty
+}
+
 install_all() {
     install_openvpn_client
     install_saleae_logic_analyzer_app
@@ -56,4 +60,5 @@ install_all() {
     install_git
     install_stow
     install_treesitter_cli
+    install_alacritty
 }

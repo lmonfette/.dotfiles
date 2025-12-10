@@ -8,6 +8,8 @@ return {
 		-- package to manage DAPs (debug adapter protocol)
 		{ url = 'https://github.com/mfussenegger/nvim-dap.git' },
 		{ url = 'https://github.com/jay-babu/mason-nvim-dap.nvim.git' },
+        { url = 'https://github.com/rcarriga/nvim-dap-ui.git' },
+        { url = 'https://github.com/nvim-neotest/nvim-nio.git' },
 		-- package to manage linters
 		{ url = 'https://github.com/mfussenegger/nvim-lint.git' },
 		{ url = 'https://github.com/rshkarin/mason-nvim-lint.git' },

@@ -128,7 +128,7 @@ local mason_config = {
         'bash-debug-adapter',
         -- c
         'codelldb',
-        -- 'cortex-debug',   -- BUG: commenting this because it has somehow got to be installed manually with mason
+        'cortex-debug',   -- BUG: commenting this because it has somehow got to be installed manually with mason
         'cpptools',
         -- d
         'debugpy',
@@ -297,6 +297,74 @@ local function setup_daps()
             end,
         },
     })
+
+    -- setup nvim dap to be able to hook itself on the gdb server
+    -- config gathered here: https://codeberg.org/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
+    local dap = require("dap")
+    -- dap.configurations.arm = {
+    --     -- the pyOCD server for the embedded system is running on port 3333
+    --     {
+    --         name = 'Attach to gdbserver :3333',
+    --         type = 'cppdbg',
+    --         request = 'attach',
+    --         target = 'localhost:3333',
+    --         program = 'pyocd gdbserver --uid $ST_LINK_ID_1 --target $STM32_TARGET',
+    --         cwd = '${workspaceFolder}'
+    --     }
+    -- }
+
+    dap.adapters.gdb_arm_none_eabi = {
+        type = 'executable',
+        command = 'gdb-multiarch',
+        args = { '--interpreter=dap' },
+    }
+
+    dap.configurations.c = {
+        {
+            name = 'Debug with GDB ARM + OpenOCD',
+            type = 'gdb_arm_none_eabi',
+            request = 'attach',
+            program = '${workspaceFolder}/build/sdk-example-sr11xx-quasar-qspi/app/example/hello_world/hello_world_coordinator.elf',
+            cwd = '${workspaceFolder}',
+            stopAtEntry = true,
+        }
+    }
+
+    vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+    vim.keymap.set('n', '<F6>', function() require('dap').detach() end)
+    vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+    vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+    vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+    vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+    vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+
+    -- setup DAP UI plugin
+    local dapui = require('dapui')
+    dapui.setup()
+
+    vim.keymap.set('n', '<leader>do', function()
+        dapui.open()
+    end)
+
+    vim.keymap.set('n', '<leader>dcl', function()
+        dapui.close()
+    end)
+
+    dap.listeners.before.attach.dapui_config = function ()
+       dapui.open()
+    end
+
+    dap.listeners.before.launch.dapui_config = function ()
+       dapui.open()
+    end
+
+    dap.listeners.before.event_terminated.dapui_config = function ()
+       dapui.close()
+    end
+
+    dap.listeners.before.event_exited.dapui_config = function ()
+       dapui.close()
+    end
 end
 
 local function setup_linters()

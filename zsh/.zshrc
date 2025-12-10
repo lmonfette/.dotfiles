@@ -127,3 +127,11 @@ export PATH="$PATH:/$HOME/.cargo/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# SPARK specific setup
+# save the debugger UUID in env variables
+export ST_LINK_ID_1="002600273431511731343632"
+export ST_LINK_ID_2="0021000B3156501420323443"
+export ST_LINK_ID_3="0034002B3433510737363934"
+export LPC_TARGET="LPC55S28"
+export STM32_TARGET="stm32u5a5ajhxq"

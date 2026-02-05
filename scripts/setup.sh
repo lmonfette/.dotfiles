@@ -12,11 +12,5 @@ SCRIPTS_DIR=$DOTFILES_DIR/scripts
 
 source "${SCRIPTS_DIR}/include.sh"
 
-# submodules
-git submodule update --init --recursive
-
 # setup the computer
 setup
-
-# install all dependencies
-install_all

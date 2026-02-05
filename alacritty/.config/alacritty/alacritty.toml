@@ -46,7 +46,7 @@ style = "Italic"
 family = "JetBrainsMono Nerd Font Mono"
 style = "Regular"
 
-[terminal.shell]
+[shell]
 program = "/bin/zsh"
 
 [window]

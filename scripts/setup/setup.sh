@@ -16,5 +16,8 @@ source "${SCRIPTS_DIR}/setup/setup_ubuntu.sh"
 source "${SCRIPTS_DIR}/setup/setup_windows.sh"
 
 setup() {
+    # submodules
+    git submodule update --init --recursive
+
     exec_os_specific macos_setup ubuntu_setup windows_setup
 }

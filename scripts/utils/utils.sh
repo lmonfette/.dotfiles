@@ -10,6 +10,7 @@ UTILS_FILE_INCLUDED=1
 MACOS_OS_NAME="MacOS"
 UBUNTU_OS_NAME="Ubuntu"
 WINDOWS_OS_NAME="Windows"
+TMP_STDIN="/tmp/stdin.txt"
 
 get_os() {
     UNAME_OUTPUT="$(uname -s)"
@@ -53,4 +54,50 @@ exec_os_specific() {
     else
         echo "No suitable OS was found. Execution cancelled."
     fi
+}
+
+# parameter 1: Function name
+# parameter 2: Status returned by the function after running
+# parameter 3: stdout and stderr return by the function
+analyze_func() {
+    local FUNC_NAME=$1
+    local STATUS=$2
+    local OUTPUT=$3
+
+    if (( STATUS == 0 )); then
+        return
+    fi
+
+    echo "Function '$FUNC_NAME' failed with exit code $STATUS."
+    echo "======================= LOG START ======================="
+    echo "$OUTPUT"
+    echo "======================== LOG END ========================"
+}
+
+set_stdin() {
+    local STDIN="$1"
+
+    echo -e "$STDIN" > $TMP_STDIN
+}
+
+reset_stdin() {
+    rm -f $TMP_STDIN
+}
+
+captured_run() {
+    local FUNC="$1"
+    shift
+
+    local OUTPUT
+    local STATUS
+
+    # create if not present
+    touch $TMP_STDIN
+
+    OUTPUT="$("$FUNC" "$@" < $TMP_STDIN 2>&1)"
+    STATUS=$?
+
+    reset_stdin
+
+    analyze_func "$FUNC" "$STATUS" "$OUTPUT"
 }

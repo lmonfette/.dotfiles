@@ -18,6 +18,7 @@ windows_install_wget() {
 windows_install_unzip() {
     echo "'windows_install_unzip' not implemented."
 }
+
 windows_install_fuse() {
     echo "'windows_install_fuse' not needed, skipping ..."
 }

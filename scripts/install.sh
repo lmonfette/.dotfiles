@@ -12,5 +12,8 @@ SCRIPTS_DIR=$DOTFILES_DIR/scripts
 
 source "${SCRIPTS_DIR}/include.sh"
 
+# elevate script privileges
+sudo -v
+
 # install all dependencies
 install_all

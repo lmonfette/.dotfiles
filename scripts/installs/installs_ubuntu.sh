@@ -148,12 +148,11 @@ ubuntu_install_fd_find() {
     sudo apt install -y fd-find
 
     #create a symlink for fd to be used
-    rm /usr/bin/fd
-    sudo ln -s "$(which fdfind)" /usr/bin/fd
+    sudo ln -sf "$(which fdfind)" /usr/bin/fd
 }
 
-ubuntu_install_pip() {
-    sudo apt install -y python3-pip
+ubuntu_install_python() {
+    sudo apt install python3 python3-pip python3-venv
 }
 
 ubuntu_install_npm() {

@@ -25,7 +25,7 @@ function utils_module.luarocks_install(package_name, require_name)
     if not has_package then
         logging.info(package_name .. ' (package) not found. Installing with luarocks...')
 
-        local command = 'luarocks install --lua-version=' .. lua_numerical_version .. ' ' .. package_name
+        local command = 'luarocks --local --lua-version=' .. lua_numerical_version .. ' install ' .. package_name
         local handle = io.popen(command)
 
         if handle == nil then
@@ -44,7 +44,7 @@ function utils_module.luarocks_install(package_name, require_name)
         if result:match('is now installed') or result:match('already installed') then
             logging.info(package_name .. ' installed successfully.')
         else
-            logging.info('Failed to install ' .. package_name .. '. Please check your luarocks setup.')
+            logging.error('Failed to install ' .. package_name .. '. Please check your luarocks setup.')
         end
     else
         logging.debug(package_name .. ' (package) is already installed.')

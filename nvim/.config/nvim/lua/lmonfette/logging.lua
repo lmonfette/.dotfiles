@@ -17,7 +17,7 @@ function logging.is_current_format_silent()
 end
 
 local function should_log(log_level)
-    return state.logging_active and state.log_level <= log_level and not logging.is_current_format_silent()
+    return state.logging_active and log_level >= state.log_level and not logging.is_current_format_silent()
 end
 
 function logging.trace(txt)

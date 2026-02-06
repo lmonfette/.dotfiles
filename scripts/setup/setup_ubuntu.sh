@@ -18,4 +18,7 @@ ubuntu_setup() {
 
     # make neovim the git commit ediot by default
     git config --global core.editor "nvim"
+
+    # install required
+    sudo luarocks --lua-version=5.1 install dkjson
 }

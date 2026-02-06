@@ -1,3 +1,3 @@
 return {
-    url = 'https://github.com/ggandor/leap.nvim.git',
+    url = 'https://codeberg.org/andyg/leap.nvim.git',
 }

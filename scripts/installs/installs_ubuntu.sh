@@ -161,7 +161,7 @@ ubuntu_install_npm() {
 
 ubuntu_install_node() {
     # Download and install nvm:
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    curl -o https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
     # in lieu of restarting the shell
     \. "$HOME/.nvm/nvm.sh"
@@ -195,4 +195,19 @@ ubuntu_install_jq() {
 
 ubuntu_install_tmux() {
     sudo apt install -y tmux
+}
+
+ubuntu_install_google_chrome() {
+    curl -o google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+    rm google-chrome-stable_current_amd64.deb
+}
+
+ubuntu_configure_package_manager() {
+    # prepare apt package manager
+    sudo apt update -y
+    sudo apt upgrade -y
+
+    # prepare dpkg
+    sudo dpkg --configure -a
 }

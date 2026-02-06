@@ -102,3 +102,12 @@ windows_install_jq() {
 windows_install_tmux() {
     echo "'windows_install_tmux' not implemented."
 }
+
+windows_install_google_chrome() {
+    echo "Please install Google Chrome manually from the internet."
+    return 1
+}
+
+windows_configure_package_manager() {
+    echo "'windows_configure_package_manager' not implemented."
+}

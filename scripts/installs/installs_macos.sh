@@ -101,7 +101,7 @@ macos_install_python() {
 
 macos_install_node() {
     # Download and install nvm:
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    curl -o https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
     # in lieu of restarting the shell
     \. "$HOME/.nvm/nvm.sh"
@@ -130,4 +130,15 @@ macos_install_jq() {
 
 macos_install_tmux() {
     brew install tmux
+}
+
+macos_install_google_chrome() {
+    echo "Please install Google Chrome manually from the internet."
+    return 1
+}
+
+macos_configure_package_manager() {
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew update
+    brew upgrade
 }

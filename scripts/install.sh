@@ -15,5 +15,8 @@ source "${SCRIPTS_DIR}/include.sh"
 # elevate script privileges
 sudo -v
 
+# configure the appropriate packager manager
+configure_package_manager
+
 # install all dependencies
 install_all

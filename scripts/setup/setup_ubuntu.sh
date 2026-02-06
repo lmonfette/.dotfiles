@@ -8,10 +8,6 @@ SETUP_UBUNTU_FILE_INCLUDED=1
 # prevent double inclusion
 
 ubuntu_setup() {
-    # prepare apt package manager
-    sudo apt update -y
-    sudo apt upgrade -y
-
     # prompt to install the tmux plugins
     echo "Run <prefix+shift+i> and <prefix+shift+u> now to install the tmux plugins."
     read input

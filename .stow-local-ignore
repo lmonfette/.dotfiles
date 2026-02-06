@@ -25,6 +25,7 @@ _darcs
 # default config end
 
 # custom config begin
-
 **/README.md/**
 **/README.txt/**
+**/usefull_scripts
+**/TODO.txt/**

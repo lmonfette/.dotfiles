@@ -148,6 +148,11 @@ install_tmux() {
     captured_run exec_os_specific macos_install_tmux ubuntu_install_tmux windows_install_tmux
 }
 
+install_google_chrome() {
+    echo "##### Installing Google Chrome #####"
+    captured_run exec_os_specific macos_install_google_chrome ubuntu_install_google_chrome windows_install_google_chrome
+}
+
 install_all() {
     install_curl
     install_cmake
@@ -174,4 +179,10 @@ install_all() {
     install_zsh
     install_jq
     install_tmux
+    install_google_chrome
+}
+
+configure_package_manager() {
+    echo "#### Configuring package manager ####"
+    captured_run exec_os_specific macos_configure_package_manager ubuntu_configure_package_manager windows_configure_package_manager
 }

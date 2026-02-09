@@ -153,6 +153,11 @@ install_google_chrome() {
     captured_run exec_os_specific macos_install_google_chrome ubuntu_install_google_chrome windows_install_google_chrome
 }
 
+install_spotify() {
+    echo "##### Installing Spotify #####"
+    captured_run exec_os_specific macos_install_spotify ubuntu_install_spotify windows_install_spotify
+}
+
 install_all() {
     install_curl
     install_cmake
@@ -180,6 +185,7 @@ install_all() {
     install_jq
     install_tmux
     install_google_chrome
+    install_spotify
 }
 
 configure_package_manager() {

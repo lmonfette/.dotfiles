@@ -203,6 +203,14 @@ ubuntu_install_google_chrome() {
     rm google-chrome-stable_current_amd64.deb
 }
 
+ubuntu_install_spotify() {
+    # configure Spotify apt repository
+    curl -sS https://download.spotify.com/debian/pubkey_5384CE82BA52C83A.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+    echo "deb https://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+    # install Spotify
+    sudo apt-get update && sudo apt-get install spotify-client
+}
+
 ubuntu_configure_package_manager() {
     # prepare apt package manager
     sudo apt update -y

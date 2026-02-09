@@ -1,3 +1,2 @@
 - Add utility to copy paste in from window manager context in neovim if needed?
 - Properly setup platform specific .zshrc
-- Install Spotify

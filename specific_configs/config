@@ -1,0 +1,16 @@
+Host <private_gitlab_FQDN>
+	HostName	<private_gitlab_hostname>
+	AddKeysToAgent	yes
+	User	<private_gitlab_email>
+	PreferredAuthentications	publickey
+	IdentityFile	~/.ssh/<ssh_key_filename>
+Host github.com
+	HostName github.com
+	AddKeysToAgent	yes
+	User	lmonfette
+	PreferredAuthentications	publickey
+	IdentityFile	~/.ssh/<ssh_key_filename>
+Host *
+	AddKeysToAgent	yes
+	PreferredAuthentications	publickey
+	IdentityFile	~/.ssh/<ssh_key_filename>

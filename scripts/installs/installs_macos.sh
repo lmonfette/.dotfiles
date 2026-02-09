@@ -137,6 +137,10 @@ macos_install_google_chrome() {
     return 1
 }
 
+macos_install_spotify() {
+    brew install --cask spotify
+}
+
 macos_configure_package_manager() {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew update

@@ -17,9 +17,6 @@ ubuntu_stow() {
     # setup neovim
     stow nvim
 
-    # setup sway
-    stow sway
-
     # setup tmux
     stow tmux
 
@@ -28,6 +25,9 @@ ubuntu_stow() {
 
     # setup oh-my-zsh
     stow oh-my-zsh
+
+    # setup niri and DMS
+    stow niri
 }
 
 ubuntu_unstow() {
@@ -37,9 +37,6 @@ ubuntu_unstow() {
     # remove neovim
     stow -D nvim
 
-    # remove sway
-    stow -D sway
-
     # remove tmux
     stow -D tmux
 
@@ -48,4 +45,7 @@ ubuntu_unstow() {
 
     # remove oh-my-zsh
     stow -D oh-my-zsh
+
+    # remove niri and DMS
+    stow -D niri
 }

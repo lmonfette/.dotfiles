@@ -158,6 +158,16 @@ install_spotify() {
     captured_run exec_os_specific macos_install_spotify ubuntu_install_spotify windows_install_spotify
 }
 
+install_vscode() {
+    echo "##### Installing VSCode #####"
+    captured_run exec_os_specific macos_install_vscode ubuntu_install_vscode windows_install_vscode
+}
+
+install_tree() {
+    echo "##### Installing tree #####"
+    captured_run exec_os_specific macos_install_tree ubuntu_install_tree windows_install_tree
+}
+
 install_all() {
     install_curl
     install_cmake
@@ -186,6 +196,8 @@ install_all() {
     install_tmux
     install_google_chrome
     install_spotify
+    install_vscode
+    install_tree
 }
 
 configure_package_manager() {

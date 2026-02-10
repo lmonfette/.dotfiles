@@ -136,6 +136,16 @@ windows_install_spotify() {
     return 1
 }
 
+windows_install_vscode() {
+    echo "'windows_install_vscode' not implemented."
+    return 1
+}
+
+windows_install_tree() {
+    echo "'windows_install_tree' not implemented."
+    return 1
+}
+
 windows_configure_package_manager() {
     echo "'windows_configure_package_manager' not implemented."
     return 1

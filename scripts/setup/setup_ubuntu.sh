@@ -21,11 +21,6 @@ ubuntu_setup() {
     # install required
     sudo luarocks --lua-version=5.1 install dkjson
 
-    # create the SSH folder
-    SSH_FOLDER_PATH="~/.ssh/"
-    mkdir -p "$SSH_FOLDER_PATH"
-    chmod 700 "$SSH_FOLDER_PATH"
-
     # start the ssh-agent
     eval $(ssh-agent -s)
 

@@ -141,6 +141,14 @@ macos_install_spotify() {
     brew install --cask spotify
 }
 
+macos_install_vscode() {
+    brew install --cask visual-studio-code
+}
+
+macos_install_tree() {
+    brew install tree
+}
+
 macos_configure_package_manager() {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew update

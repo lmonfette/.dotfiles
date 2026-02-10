@@ -34,24 +34,7 @@ ubuntu_install_fuse() {
 }
 
 ubuntu_install_openvpn_client() {
-    # install required tools for installation
-    sudo apt install -y apt-transport-https curl
-
-    # make sure the directory to store the apt repository exists
-    mkdir -p /etc/apt/keyrings
-    # download the openvpn apt repository
-    sudo curl -sSfL https://packages.openvpn.net/packages-repo.gpg | sudo tee /etc/apt/keyrings/openvpn.asc
-
-    # determine the distribution to use
-    DISTRIBUTION=$(lsb_release -a | grep Codename | cut --field 2)
-
-    echo "Installing OpenVPN for ubuntu $DISTRIBUTION distribution."
-
-    sudo echo "deb [signed-by=/etc/apt/keyrings/openvpn.asc] https://packages.openvpn.net/openvpn3/debian $DISTRIBUTION main" | sudo tee -a /etc/apt/sources.list.d/openvpn3.list
-
-    sudo apt update -y
-
-    sudo apt install -y openvpn3
+    sudo apt install -y openvpn
 }
 
 ubuntu_install_saleae_logic_analyzer_app() {
@@ -204,11 +187,22 @@ ubuntu_install_google_chrome() {
 }
 
 ubuntu_install_spotify() {
-    # configure Spotify apt repository
-    curl -sS https://download.spotify.com/debian/pubkey_5384CE82BA52C83A.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-    echo "deb https://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-    # install Spotify
-    sudo apt-get update && sudo apt-get install spotify-client
+    sudo snap install spotify
+}
+
+ubuntu_install_vscode() {
+    # download the VSCode .deb file
+    curl -Lo vscode-ubuntu-amd64.deb https://code.visualstudio.com/sha/download\?build\=stable\&os\=linux-deb-x64
+
+    # install it
+    sudo apt install -y vscode-ubuntu-amd64.deb
+
+    # remove it
+    rm vscode-ubuntu-amd64.deb
+}
+
+ubuntu_install_tree() {
+    sudo apt install -y tree
 }
 
 ubuntu_configure_package_manager() {

@@ -107,9 +107,7 @@ alias kga="kubectl get all"
 alias dcu="docker-compose up"
 alias dcd="docker-compose down"
 
-# setup PATH (basic system paths)
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-
+# setup PATH
 # neovim on linux
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
@@ -117,12 +115,12 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/opt/homebrew/bin"
 export PATH="$PATH:/opt/homebrew/sbin"
 # python installed libraries
-export PATH="$PATH:/$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 # installed tools
 export PATH="$PATH:/opt/local/sbin"
 export PATH="$PATH:/usr/local/bin"
 # rust cargo
-export PATH="$PATH:/$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -135,3 +133,5 @@ export ST_LINK_ID_2="0021000B3156501420323443"
 export ST_LINK_ID_3="0034002B3433510737363934"
 export LPC_TARGET="LPC55S28"
 export STM32_TARGET="stm32u5a5ajhxq"
+
+export PATH="/home/lmonfette/.pixi/bin:$PATH"

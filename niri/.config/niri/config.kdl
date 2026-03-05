@@ -25,7 +25,7 @@ input {
             layout "us,ca"
             variant ",fr"
 
-            options "grp:alt_shift_toggle"
+            options "grp:ctrl_alt_toggle"
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
         }

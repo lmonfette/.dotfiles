@@ -10,7 +10,7 @@ local formatter = {}
 
 local function format_unknown_line(line, words, lmd)
     if line ~= '' then
-        logging.error("The unknown line type '" .. "' can't be handled")
+        logging.error("The unknown line type '" .. "' can't be handled: " .. line)
     end
     return line
 end

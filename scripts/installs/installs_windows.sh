@@ -46,7 +46,7 @@ windows_install_obsidian() {
     return 1
 }
 
-windows_install_treesitter_cli() {
+windows_install_git() {
     echo "'windows_install_git' not implemented."
     return 1
 }

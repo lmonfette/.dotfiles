@@ -14,11 +14,12 @@ source "${SCRIPTS_DIR}/utils/utils.sh"
 source "${SCRIPTS_DIR}/stow/stow_macos.sh"
 source "${SCRIPTS_DIR}/stow/stow_ubuntu.sh"
 source "${SCRIPTS_DIR}/stow/stow_windows.sh"
+source "${SCRIPTS_DIR}/stow/stow_wsl_ubuntu.sh"
 
 _stow() {
-    exec_os_specific macos_stow ubuntu_stow windows_stow
+    exec_os_specific macos_stow ubuntu_stow windows_stow wsl_ubuntu_stow
 }
 
 unstow() {
-    exec_os_specific macos_unstow ubuntu_unstow windows_unstow
+    exec_os_specific macos_unstow ubuntu_unstow windows_unstow wsl_ubuntu_unstow
 }

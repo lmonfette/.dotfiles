@@ -109,7 +109,7 @@ alias dcd="docker-compose down"
 
 # setup PATH
 # neovim on linux
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH="$PATH:/opt/nvim"
 
 # homebrew
 export PATH="$PATH:/opt/homebrew/bin"

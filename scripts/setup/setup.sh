@@ -14,10 +14,11 @@ source "${SCRIPTS_DIR}/utils/utils.sh"
 source "${SCRIPTS_DIR}/setup/setup_macos.sh"
 source "${SCRIPTS_DIR}/setup/setup_ubuntu.sh"
 source "${SCRIPTS_DIR}/setup/setup_windows.sh"
+source "${SCRIPTS_DIR}/setup/setup_wsl_ubuntu.sh"
 
 setup() {
     # submodules
     git submodule update --init --recursive
 
-    exec_os_specific macos_setup ubuntu_setup windows_setup
+    exec_os_specific macos_setup ubuntu_setup windows_setup wsl_ubuntu_setup
 }

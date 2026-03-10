@@ -70,10 +70,6 @@ ubuntu_install_inkscape() {
     chmod +x $APPS_DIR/InkScape-1.4.2.AppImage
 }
 
-ubuntu_install_treesitter_cli() {
-    npm install -g tree-sitter-cli
-}
-
 ubuntu_install_git() {
     sudo apt install -y git
 }
@@ -98,8 +94,8 @@ ubuntu_install_neovim() {
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
     chmod u+x nvim-linux-x86_64.appimage
     # 2. Move the app image out the current directory
-    mkdir -p /opt/nvim
-    mv nvim-linux-x86_64.appimage /opt/nvim/nvim
+    sudo mkdir -p /opt/nvim
+    sudo mv nvim-linux-x86_64.appimage /opt/nvim/nvim
 }
 
 ubuntu_install_nerd_fonts() {
@@ -135,7 +131,7 @@ ubuntu_install_fd_find() {
 }
 
 ubuntu_install_python() {
-    sudo apt install python3 python3-pip python3-venv
+    sudo apt install -y python3 python3-pip python3-venv
 }
 
 ubuntu_install_npm() {
@@ -144,7 +140,7 @@ ubuntu_install_npm() {
 
 ubuntu_install_node() {
     # Download and install nvm:
-    curl -o https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
     # in lieu of restarting the shell
     \. "$HOME/.nvm/nvm.sh"

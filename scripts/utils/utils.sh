@@ -9,6 +9,7 @@ UTILS_FILE_INCLUDED=1
 
 MACOS_OS_NAME="MacOS"
 UBUNTU_OS_NAME="Ubuntu"
+WSL_OS_NAME="WSL2"
 WINDOWS_OS_NAME="Windows"
 TMP_STDIN="/tmp/stdin.txt"
 
@@ -17,8 +18,9 @@ get_os() {
 
     if [ "${UNAME_OUTPUT}" = "Linux" ]; then
         # detect if we have WSL
-        if grep -qiE "microsoft|wsl" /proc/version 2>/dev/null; then
-            echo "$WINDOWS_OS_NAME"
+        if grep -qiE "WSL2" /proc/version 2>/dev/null; then
+            # Assume the OS is WSL2 with Ubuntu
+            echo "$WSL_OS_NAME"
         elif grep -qiE "Ubuntu" /proc/version 2>/dev/null; then
             echo "$UBUNTU_OS_NAME"
         fi
@@ -42,6 +44,7 @@ exec_os_specific() {
     MACOS_FUNCTION=$1
     UBUNTU_FUNCTION=$2
     WINDOWS_FUNCTION=$3
+    WSL_FUNCTION=$4
 
     OS=$(get_os)
 
@@ -51,6 +54,8 @@ exec_os_specific() {
         $UBUNTU_FUNCTION
     elif [ "$OS" = "$WINDOWS_OS_NAME" ]; then
         $WINDOWS_FUNCTION
+    elif [ "$OS" = "$WSL_OS_NAME" ]; then
+        $WSL_FUNCTION
     else
         echo "No suitable OS was found. Execution cancelled."
     fi
@@ -100,4 +105,8 @@ captured_run() {
     reset_stdin
 
     analyze_func "$FUNC" "$STATUS" "$OUTPUT"
+}
+
+get_windows_username(){
+    pwsh.exe -Command "[Environment]::UserName" | tr -d '\r'
 }

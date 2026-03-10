@@ -26,6 +26,9 @@ ubuntu_stow() {
     # setup oh-my-zsh
     stow oh-my-zsh
 
+    # setup dracula theme
+    stow dracula
+
     # setup niri and DMS
     stow niri
 }
@@ -45,6 +48,9 @@ ubuntu_unstow() {
 
     # remove oh-my-zsh
     stow -D oh-my-zsh
+
+    # remove dracula
+    stow -D dracula
 
     # remove niri and DMS
     stow -D niri

@@ -170,6 +170,10 @@ wsl_ubuntu_install_tree() {
     sudo apt install -y tree
 }
 
+wsl_ubuntu_install_sox() {
+    sudo apt install -y sox
+}
+
 wsl_ubuntu_configure_package_manager() {
     # prepare apt package manager
     sudo apt update -y

@@ -169,6 +169,11 @@ install_tree() {
     captured_run exec_os_specific macos_install_tree ubuntu_install_tree windows_install_tree wsl_ubuntu_install_tree
 }
 
+install_sox() {
+    echo "##### Installing sox #####"
+    captured_run exec_os_specific macos_install_sox ubuntu_install_sox windows_install_sox wsl_ubuntu_install_sox
+}
+
 install_all() {
     install_curl
     install_cmake
@@ -200,6 +205,7 @@ install_all() {
     install_spotify
     install_vscode
     install_tree
+    install_sox
 }
 
 configure_package_manager() {

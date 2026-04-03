@@ -145,6 +145,10 @@ macos_install_tree() {
     brew install tree
 }
 
+macos_install_sox() {
+    brew install sox
+}
+
 macos_configure_package_manager() {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew update

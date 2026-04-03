@@ -146,6 +146,11 @@ windows_install_tree() {
     return 1
 }
 
+windows_install_sox() {
+    echo "'windows_install_sox' not implemented."
+    return 1
+}
+
 windows_configure_package_manager() {
     echo "'windows_configure_package_manager' not implemented."
     return 1

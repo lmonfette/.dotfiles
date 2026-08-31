@@ -25,6 +25,6 @@ wsl_ubuntu_setup() {
     eval $(ssh-agent -s)
 
     # install GlazeWM and Zebar (tiling window manager)
-    pwsh.exe -Command "winget install glazewm"
+    pwsh.exe -Command "winget install glzr-io.glazewm"
     pwsh.exe -Command "winget install zebar"
 }
